@@ -4,10 +4,102 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gilmore Girls</title>
-    <link rel="stylesheet" href="src/style.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
   </head>
+  <style>
+    body {
+      background-image: url("https://s3.amazonaws.com/shecodesio-production/uploads/files/000/114/350/original/Gilmore-girls-revival-wallpaper-gilmore-girls-40019994-1920-1080.png?1707349934");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: black;
+      font-family: "Open Sans", sans-serif;
+    }
+    .container {
+      margin: 100px auto;
+      max-width: 700px;
+      border: 4px solid #0a0b27;
+      border-radius: 15px;
+      background-color: rgb(134, 179, 194, 0.5);
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      font-size: 100px;
+    }
+
+    h2 {
+      color: white;
+      text-align: center;
+    }
+
+    a {
+      margin-top: 50px;
+      display: block;
+      text-align: center;
+      color: white;
+    }
+
+    .fact-button {
+      width: 220px;
+      background: transparent;
+      display: block;
+      color: #0a0b27;
+      font-size: 15px;
+      font-weight: bold;
+      margin: 50px auto 0 auto;
+      padding: 10px 10px 10px 10px;
+      border: 2px solid #0a0b27;
+      border-radius: 30px;
+      box-shadow: 5px 3px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .result {
+      text-align: center;
+      font-size: 16px;
+      background-color: rgb(134, 179, 194, 0.5);
+      padding: 10px;
+      line-height: 2;
+    }
+
+    .hidden {
+      display: none;
+    }
+    .image-gallery {
+      display: flex;
+      min-height: 50vh;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-gallery img {
+      object-fit: cover;
+      width: 450px;
+      height: 350px;
+      border: 2px solid #0a0b27;
+      border-radius: 10px;
+    }
+    footer {
+      color: white;
+      text-align: center;
+    }
+
+    .blink {
+      text-align: center;
+      animation: blink-animation 1s steps(5, start) infinite;
+    }
+
+    @keyframes blink-animation {
+      to {
+        visibility: hidden;
+      }
+    }
+    @-webkit-keyframes blink-animation {
+      to {
+        visibility: hidden;
+      }
+    }
+  </style>
   <body>
     <h1>Gilmore Girls</h1>
 
@@ -49,6 +141,37 @@
         on GitHub</a
       >
     </footer>
-    <script src="src/index.js"></script>
+
+    <script>
+      function displayFact(response) {
+        console.log("fact generated");
+        new Typewriter("#fact", {
+          strings: response.data.answer,
+          autoStart: true,
+          delay: 1,
+          cursor: "",
+        });
+      }
+
+      function showFact(event) {
+        let apiKey = "2046c535afeb092fo82f1d306d8a2b2t";
+        let context =
+          "Your are a smart AI Assistant that has watched all of the hit TV series Gilmore Girls and you tell interesting facts about the TV series.The fact must be provided in HTML format. Example: <p>this is a fact</p> Make sure to follow the user instructions. Do not include a title to the fact. Sign the fact with 'SheCodes AI' inside a <strong> element at the end of the fact and NOT at the beginning";
+        let prompt = `User Instructions: Generate a short and interesting fact about the TV show Gilmore Girls. Please do not repeat facts and give a ne wone each time the user clicks`;
+        let apiUrl = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+        let factElement = document.querySelector("#fact");
+        factElement.classList.remove("hidden");
+        factElement.innerHTML = `<div class="blink">Generating a fact for you about Gilmore Girls 🤖</div>`;
+
+        console.log("generating fact");
+        console.log("prompt");
+        console.log("context");
+        axios.get(apiUrl).then(displayFact);
+      }
+
+      let showFactButton = document.querySelector("#fact-button");
+      showFactButton.addEventListener("click", showFact);
+    </script>
   </body>
 </html>

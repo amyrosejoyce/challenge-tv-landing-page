@@ -3,57 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Gilmore Girls</title>
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
   </head>
   <body>
     <h1>Gilmore Girls</h1>
-    <h2>
-      "I don’t like Mondays, but unfortunately, they come around eventually."
-      —Lorelai Gilmore
-    </h2>
 
-    <a href="https://www.julesbuono.com/rory-gilmore-book-list/" target="_blank"
-      >Books Rory Gimore has read...</a
-    >
+    <div class="container">
+      <h2>
+        "I don’t like Mondays, but unfortunately, they come around eventually."
+        —Lorelai Gilmore
+      </h2>
+      <button class="fact-button" id="fact-button">
+        Click for Gilmore Girls fact
+      </button>
 
-    <form action="">
-      <input type="text" />
-      <input type="submit" />
-    </form>
-    <br />
-    <br /><br /><br /><br /><br /><br /><br /><br /><br />
-    <div class="gallery-container" id="gallery">
-      <ul class="image-gallery">
-        <li>
-          <img
-            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/115/040/original/th_%283%29.jpg?1707728268"
-            alt="Gilmore girls cast"
-            alt="" />
-          <div class="overlay"></div>
-        </li>
-        <li>
-          <img
-            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/115/041/original/th_%282%29.jpg?1707728320"
-            alt="Gilmore girls cast"
-            alt="" />
-          <div class="overlay"></div>
-        </li>
-        <li>
+      <p class="result hidden" id="fact"></p>
+
+      <a
+        href="https://www.julesbuono.com/rory-gilmore-book-list/"
+        target="_blank">
+        All the books Rory Gimore has read 📚...</a
+      >
+
+      <div class="gallery-container" id="gallery">
+        <ul class="image-gallery">
           <img
             src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/115/042/original/CastGG.jpg?1707728346"
             alt="Gilmore girls cast"
             alt="" />
           <div class="overlay"></div>
-        </li>
-        <li>
-          <img
-            src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/115/043/original/th_%287%29.jpg?1707728407"
-            alt="Gilmore girls cast"
-            alt="" />
-          <div class="overlay"></div>
-        </li>
-      </ul>
+        </ul>
+      </div>
     </div>
 
     <footer>
@@ -65,8 +48,6 @@
       <a href="https://github.com/amyrosejoyce/challenge-tv-landing-page">
         on GitHub</a
       >
-      and is hosted on
-      <a href=".netlify.app/">Netlify</a>
     </footer>
     <script src="src/index.js"></script>
   </body>
